@@ -12,7 +12,7 @@ $(document).ready(function () {
         event.preventDefault();
         searchPost();
     })
-
+    
     function searchPost() {
         var formData = {
             name: $("#name").val(),

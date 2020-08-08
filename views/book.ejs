@@ -65,11 +65,12 @@
                 <div class="col-4">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Seats</span>
+                            <span class="input-group-text" id="basic-addon1">Seats available</span>
                         </div>
                         <input type="text" class="form-control" value="<%= result.capacity - result.seats_filled %>" readonly>
                     </div>
                 </div>
+                <input type="hidden" value="<%= result.schedule_id %>" id="flight">
             </div>
         </div>
         <form class="needs-validation p-3" id="bookform" novalidate>

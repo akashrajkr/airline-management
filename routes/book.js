@@ -27,21 +27,23 @@ router.get('/', function (req, res) {
 });
 
 router.post('/confirm', (req, res) => {
-        var name = req.body.name,
-            email= req.body.email,
-            country= req.body.country,
-            seats=req.body.seats,
-            address= req.body.address,
-            age=req.body.age,
-            phone= req.body.phone,
-            flightid = req.body.flightid;
-            passportid = req.body.passportid;
-    var sql = "insert into passenger (name,email,address,nationality,age,phone,passport_id) values(?,?,?,?,?,?)";
+    console.log(req.body);
+    var name = req.body.name,
+        email= req.body.email,
+        country= req.body.country,
+        seats=parseInt(req.body.seats),
+        address= req.body.address,
+        age=parseInt(req.body.age),
+        phone= req.body.phone,
+        flightid = parseInt(req.body.flightid);
+        passportid = req.body.passportid;
+    console.log(name,email,country,seats,address,age,phone,flightid,passportid)
+    var sql = "insert into passenger (name,email,address,nationality,age,phone,passport_id) values (?,?,?,?,?,?,?)";
     var sql1 = "insert into transaction (passenger_id,flight_id,seats_booked) values (?,?,?)";
-    con.query(sql,[name,email,address,country,age,phone],(err,result)=>{
+    con.query(sql,[name,email,address,country,age,phone,passsportid],(err,result)=>{  
         if(err) throw err;
+        console.log(result);
         var passid = result.insertId;
-        // console.log(result);
         con.query(sql1,[passid,flightid,seats],(err,result)=>{
             if(err) throw err;
             console.log(result);

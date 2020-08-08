@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.21, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.20, for Win64 (x86_64)
 --
 -- Host: localhost    Database: airplane
 -- ------------------------------------------------------
--- Server version	8.0.21
+-- Server version	8.0.20
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,9 +18,6 @@
 --
 -- Table structure for table `aircraft`
 --
-DROP database if exists `airplane`;
-CREATE database `airplane`;
-use `airplane`;
 
 DROP TABLE IF EXISTS `aircraft`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -52,16 +49,16 @@ DROP TABLE IF EXISTS `passenger`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `passenger` (
-  `passenger_id` int NOT NULL,
+  `passenger_id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
-  `address` varchar(45) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
   `nationality` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `age` int DEFAULT NULL,
-  `phone` int DEFAULT NULL,
+  `phone` varchar(15) DEFAULT NULL,
   `passport_id` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`passenger_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='	';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='	';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +67,7 @@ CREATE TABLE `passenger` (
 
 LOCK TABLES `passenger` WRITE;
 /*!40000 ALTER TABLE `passenger` DISABLE KEYS */;
-INSERT INTO `passenger` VALUES (1,'ajay','nam mane','india','akkaya@redbus.com',20,999999,'J98989R');
+INSERT INTO `passenger` VALUES (1,'ajay','nam mane','india','akkaya@redbus.com',20,'999999','J98989R'),(2,'Akash','akash','india','akash',9,'8618232','R9090904');
 /*!40000 ALTER TABLE `passenger` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,9 +116,7 @@ CREATE TABLE `schedule` (
   `delay` int DEFAULT NULL,
   PRIMARY KEY (`schedule_id`),
   KEY `FK_aircraft_idx` (`aircraft_id`),
-  KEY `FK_route_idx` (`route_id`),
-  CONSTRAINT `FK_aircraft` FOREIGN KEY (`aircraft_id`) REFERENCES `aircraft` (`aircraft_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_route` FOREIGN KEY (`route_id`) REFERENCES `route` (`route_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `FK_route_idx` (`route_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -148,10 +143,10 @@ CREATE TABLE `transaction` (
   `flight_id` int DEFAULT NULL,
   `seats_booked` int DEFAULT NULL,
   PRIMARY KEY (`trans_id`),
-  KEY `FK_passenger_idx` (`passenger_id`),
   KEY `FK_flight_idx` (`flight_id`),
-  CONSTRAINT `FK_flight` FOREIGN KEY (`flight_id`) REFERENCES `schedule` (`schedule_id`),
-  CONSTRAINT `FK_passenger` FOREIGN KEY (`passenger_id`) REFERENCES `passenger` (`passenger_id`)
+  KEY `FK_passenger_idx` (`passenger_id`),
+  CONSTRAINT `FK_flight` FOREIGN KEY (`flight_id`) REFERENCES `schedule` (`schedule_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_passenger` FOREIGN KEY (`passenger_id`) REFERENCES `passenger` (`passenger_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -174,4 +169,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-08-08 14:24:35
+-- Dump completed on 2020-08-08 16:50:09

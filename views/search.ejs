@@ -1,0 +1,47 @@
+<% include partials/header %>
+<script src="javascripts/postsearch.js"></script>
+<div class="jumbotron jumbotron-fluid" style="padding: 2rem 1rem;">
+  <div class="container">
+      <h3 class="display-4">Find flights</h3>
+  </div>
+</div>
+<div class="container">
+  <form id="searchform" class="p-5 m-2">
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <div class="input-group-append">
+              <label class="input-group-text" for="fromid">From</label>
+            </div>
+            <select class="custom-select" id="fromid">
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <div class="input-group-append">
+              <label class="input-group-text" for="toid">To</label>
+            </div>
+            <select class="custom-select" id="toid">
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-group-append">
+        <label class="input-group-text" for="date">Date</label>
+      </div>
+      <input type="date" class="form-control" id="date">
+    </div>
+    <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+  </form>
+
+  <div id="search-results">
+
+  </div>
+</div>
+<% include partials/footer %>

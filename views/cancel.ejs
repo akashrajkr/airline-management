@@ -1,0 +1,29 @@
+<% include partials/header %>
+<div class="jumbotron jumbotron-fluid" style="padding: 2rem 1rem;">
+    <div class="container">
+        <h3 class="display-4">Cancel Ticket</h3>
+    </div>
+</div>
+
+<div class="container">
+    <form id="cancelticket" class="form-group">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Transaction Id</span>
+            </div>
+            <input type="text" class="form-control" id = "cancel" required>
+        </div>
+        <button type="submit" class="btn btn-primary text-center">Search</button>
+    </form>
+    <div id="search-results">
+
+    </div>
+    <div class="m-2" id="alert" >
+
+    </div>
+
+</div>
+
+<script src="javascripts/postcancel.js"></script>
+
+<% include partials/footer %>

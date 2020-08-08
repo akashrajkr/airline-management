@@ -1,0 +1,168 @@
+<% include partials/header %>
+<script src="../javascripts/postbook.js"></script>
+<div class="jumbotron jumbotron-fluid" style="padding: 2rem 1rem;">
+    <div class="container">
+        <h3 class="display-4">Book Tickets</h3>
+    </div>
+</div>
+<div class="container">
+    <div class="card">
+        <div class="card-body mt-2">
+            <h3 class="card-title"><%= result.name %></h3>
+            <div class="row">
+                <div class="col-4">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Date</span>
+                        </div>
+                        <input type="text" class="form-control" value="<%= new Date(result.departure).toLocaleDateString() %>" readonly>
+                                            </div>
+                </div>
+                <div class="col-4">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">From</span>
+                        </div>
+                        <input type="text" class="form-control" value="<%= result.srcport %>" readonly>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">To</span>
+                        </div>
+                        <input type="text" class="form-control" value="<%= result.destport %>" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Fare</span>
+                        </div>
+                        <input type="text" class="form-control" id="fare" value="<%= result.fare %>" readonly>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Departure</span>
+                        </div>
+                        <input type="text" class="form-control" value="<%= new Date(result.departure).toLocaleTimeString() %>" readonly>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Arrival</span>
+                        </div>
+                        <input type="text" class="form-control" value="<%= new Date(result.arrival).toLocaleTimeString() %>" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Seats</span>
+                        </div>
+                        <input type="text" class="form-control" value="<%= result.capacity - result.seats_filled %>" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form class="needs-validation p-3" id="bookform" novalidate>
+            <input type="hidden" id="flight" value="<%= result.flightid%>">
+            <h4>Your Details</h4>
+            <div class="form-row">
+                <div class="col-md-3 mb-3">
+                    <label for="name">Full Name</label>
+                    <input type="text" class="form-control" id="name" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="email">Email</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        </div>
+                        <input type="email" class="form-control" id="email"
+                            aria-describedby="inputGroupPrepend" required>
+                        <div class="invalid-feedback">
+                            Please enter a valid email.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="country">Country</label>
+                    <input type="text" class="form-control" id="country" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="seats">Seats</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" id="seats"
+                            aria-describedby="inputGroupPrepend" min="1" max="5" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid address.
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="age">Age</label>
+                    <input type="number" class="form-control" id="age" min="2" max="90" required>
+                    <div class="valid-feedback">
+                        Lookin young!
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="age">Contact</label>
+                    <input type="text" class="form-control" id="phone" required>
+                    <div class="valid-feedback">
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="passport">Passport No.</label>
+                    <input type="text" minlength="8" maxlength="8" class="form-control" id="passport" required>
+                    <div class="valid-feedback">
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary float-right" type="submit">Confirm booking</button>
+        </form>
+    </div>
+
+
+    <script>
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</div>
+
+<% include partials/footer %>

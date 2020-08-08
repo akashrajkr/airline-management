@@ -1,0 +1,118 @@
+<% include partials/header %>
+<div class="container">
+    <div class="alert alert-success mt-4" role="alert">
+        Booking Successfull !!
+    </div>
+    <div class="card">
+        <div class="card-body mt-2">
+            <h3 class="card-title">Your Ticket</h3>
+            <div class="row">
+                <div class="col-3">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Transaction ID</span>
+                        </div>
+                        <input type="text" class="form-control" value="<%= result.transid %>" readonly>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Name</span>
+                        </div>
+                        <input type="text" class="form-control" value="<%= result.name %>" readonly>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Age</span>
+                        </div>
+                        <input type="text" class="form-control" value="<%= result.age %>" readonly>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Email-Id</span>
+                        </div>
+                        <input type="text" class="form-control" value="<%= result.email %>" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">From</span>
+                        </div>
+                        <input type="text" class="form-control" value="<%= result.airport %>" readonly>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">To</span>
+                        </div>
+                        <input type="text" class="form-control" value="<%= result.destination %>" readonly>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Departure</span>
+                        </div>
+                        <input type="text" class="form-control" value="<%= result.departure %>" readonly>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Arrival</span>
+                        </div>
+                        <input type="text" class="form-control" value="<%= result.arrival %>" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Airplane</span>
+                        </div>
+                        <input type="text" class="form-control" value="<%= result.type %>" readonly>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Amount Paid</span>
+                        </div>
+                        <input type="text" class="form-control" value="<%= result.fare * result.seats %>" readonly>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Seats</span>
+                        </div>
+                        <input type="text" class="form-control" value="<%= result.seats_booked %>" readonly>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Date of Journey</span>
+                        </div>
+                        <input type="text" class="form-control" value="<%= result.date %>" readonly>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h4 style="text-align: center;">Thanks for Booking !!</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include partials/footer %>

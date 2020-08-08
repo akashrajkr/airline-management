@@ -1,0 +1,24 @@
+<% include partials/header %>
+<script src="../javascripts/postpnr.js"></script>
+<div class="jumbotron jumbotron-fluid" style="padding: 2rem 1rem;">
+    <div class="container">
+        <h3 class="display-4">PNR Status</h3>
+    </div>
+</div>
+
+<div class="container">
+    <form id="searchpnr" class="form-group">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Transaction Id</span>
+            </div>
+            <input type="text" class="form-control" id = "pnr" required>
+        </div>
+        <button type="submit" class="btn btn-primary text-center">Submit</button>
+    </form>
+    <div id="search-form">
+
+    </div>
+</div>
+
+<% include partials/footer %>

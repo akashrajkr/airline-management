@@ -72,15 +72,19 @@ $( document ).ready(function(){
         if(result.length > 0){
           result.forEach(element => {
               html +=   `
-              <div class="card" class="mb-2" style="width: 12rem;">
+              <div class="row">
+              <div class="col">
+              <div class="cuscard">
               <div class="card-body">
                 <h5 class="card-title">${element.name}</h5>
-                <p class="card-text">Date: ${new Date(element.departure).toLocaleDateString()}</p>
-                <p class="card-text">Departure: ${new Date(element.departure).toLocaleTimeString()}</p>
-                <p class="card-text">Arrival: ${new Date(element.arrival).toLocaleTimeString()}</p>
-                <p class="card-text">Seats available: ${element.capacity - element.seats_filled}</p>
-                <a href="/book/?from=${element.source}&to=${element.destination}&date=${element.departure.substring(0,10)}&flight=${element.schedule_id}" class="btn btn-primary">Book now</a>
+                <span style="padding-right: 20px;" class="card-text"><strong>Date:</strong> ${new Date(element.departure).toLocaleDateString()}</span>
+                <span style="padding-right: 20px;" class="card-text"><strong>Departure:</strong> ${new Date(element.departure).toLocaleTimeString()}</span>
+                <span style="padding-right: 20px;" class="card-text"><strong>Arrival:</strong> ${new Date(element.arrival).toLocaleTimeString()}</span>
+                <span style="padding-right: 20px;" class="card-text"><strong>Seats available:</strong> ${element.capacity - element.seats_filled}</span>
+                <a style="margin-bottom: 20px;" href="/book/?from=${element.source}&to=${element.destination}&date=${element.departure.substring(0,10)}&flight=${element.schedule_id}" class="btn btn-primary float-right">Book now</a>
               </div>
+            </div>
+            </div>
             </div>
               `
           })

@@ -38,9 +38,9 @@ router.post('/confirm', (req, res) => {
         flightid = parseInt(req.body.flightid);
         passportid = req.body.passportid;
     console.log(name,email,country,seats,address,age,phone,flightid,passportid)
-    var sql = "insert into passenger (name,email,address,nationality,age,phone,passport_id) values (?,?,?,?,?,?,?)";
+    var sql = "insert into passenger (passenger_name,email,address,nationality,age,phone,passport_id) values (?,?,?,?,?,?,?)";
     var sql1 = "insert into transaction (passenger_id,flight_id,seats_booked) values (?,?,?)";
-    con.query(sql,[name,email,address,country,age,phone,passsportid],(err,result)=>{  
+    con.query(sql,[name,email,address,country,age,phone,passportid],function (err,result){ 
         if(err) throw err;
         console.log(result);
         var passid = result.insertId;
@@ -54,7 +54,7 @@ router.post('/confirm', (req, res) => {
 
 router.get('/transdetails', (req, res)=> {
     var id = req.query.id;
-    var sql =  `select * from passenger p, transaction t, schedule f,route r,aircraft a where f.aircraft_id=a.aircraft_id and p.passenger_id=t.passenger_id and f.route_id=r.route_id and t.flight_id = f.flight_id and t.trans_id = ${id}`;
+    var sql =  `select * from passenger p, transaction t, schedule f,route r,aircraft a where f.aircraft_id=a.aircraft_id and p.passenger_id=t.passenger_id and f.route_id=r.route_id and t.flight_id = f.schedule_id and t.trans_id = ${id}`;
     con.query(sql,(err, result) => {
         if(err) throw err;
         process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";

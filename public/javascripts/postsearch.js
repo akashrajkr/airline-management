@@ -74,7 +74,7 @@ $( document ).ready(function(){
               html +=   `
               <div class="row">
               <div class="col">
-              <div class="cuscard">
+              <div class="srcard">
               <div class="card-body">
                 <h5 class="card-title">${element.name}</h5>
                 <span style="padding-right: 20px;" class="card-text"><strong>Date:</strong> ${new Date(element.departure).toLocaleDateString()}</span>

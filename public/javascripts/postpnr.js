@@ -36,7 +36,7 @@ $(document).ready(function () {
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">Transaction ID</span>
                                     </div>
-                                    <input type="text" class="form-control" value="${result.transid}" readonly>
+                                    <input type="text" class="form-control" value="${result.trans_id}" readonly>
                                 </div>
                             </div>
                             <div class="col-3">
@@ -44,7 +44,7 @@ $(document).ready(function () {
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">Name</span>
                                     </div>
-                                    <input type="text" class="form-control" value="${result.name}" readonly>
+                                    <input type="text" class="form-control" value="${result.passenger_name}" readonly>
                                 </div>
                             </div>
                             <div class="col-3">
@@ -70,7 +70,7 @@ $(document).ready(function () {
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">From</span>
                                     </div>
-                                    <input type="text" class="form-control" value="${result.airport}" readonly>
+                                    <input type="text" class="form-control" value="${result.source}" readonly>
                                 </div>
                             </div>
                             <div class="col-3">
@@ -86,7 +86,7 @@ $(document).ready(function () {
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">Departure</span>
                                     </div>
-                                    <input type="text" class="form-control" value="${result.departure}" readonly>
+                                    <input type="text" class="form-control" value="${new Date(result.departure).toLocaleTimeString()}" readonly>
                                 </div>
                             </div>
                             <div class="col-3">
@@ -94,7 +94,7 @@ $(document).ready(function () {
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">Arrival</span>
                                     </div>
-                                    <input type="text" class="form-control" value="${result.arrival}" readonly>
+                                    <input type="text" class="form-control" value="${new Date(result.arrival).toLocaleTimeString()}" readonly>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +104,7 @@ $(document).ready(function () {
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">Airplane</span>
                                     </div>
-                                    <input type="text" class="form-control" value="${result.type}" readonly>
+                                    <input type="text" class="form-control" value="${result.name}" readonly>
                                 </div>
                             </div>
                             <div class="col-3">
@@ -128,7 +128,7 @@ $(document).ready(function () {
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">Date</span>
                                     </div>
-                                    <input type="text" class="form-control" value="${result.date}" readonly>
+                                    <input type="text" class="form-control" value="${new Date(result.departure).toLocaleDateString()}" readonly>
                                 </div>
                             </div>
                         </div>

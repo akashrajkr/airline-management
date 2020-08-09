@@ -7,7 +7,7 @@ a {
   padding: 2rem 1rem;
 }
 
-.card {
+.homecard {
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
@@ -24,15 +24,15 @@ a {
   font-size: 20px;
 }
 
-.cuscard {
+.srcard {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   padding-right: 16px;
   padding-left: 16px;
   margin: 20px;
   width: auto;
-  height: 100px;
-  padding-bottom: 10px;
+  height: 150px;
+  padding-bottom: 30px;
   cursor: pointer;
 }
 

@@ -60,6 +60,7 @@ router.get('/transdetails', (req, res)=> {
         process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
         console.log('email: '+result[0].email)
        if(!sent){
+         console.log('sending');
            sent = !sent;
         var mailOptions = {
             from: 'akkayyaairlines@gmail.com',
@@ -67,8 +68,8 @@ router.get('/transdetails', (req, res)=> {
             subject: 'Your Ticket',
             html : `
 
-                <h2> Your transaction id: ${result[0].transid} </h2>
-                <h4> Check more details in <a href="localhost:3000/pnr/?id=${result[0].transid}">our website</a></h4>
+                <h2> Your transaction id: ${result[0].trans_id} </h2>
+                <h4> Check more details in <a href="localhost:3000/pnr/?id=${result[0].trans_id}">our website</a></h4>
             `
           };
           transporter.sendMail(mailOptions, function(error, info){

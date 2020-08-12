@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `airplane` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `airplane`;
 -- MySQL dump 10.13  Distrib 8.0.20, for Win64 (x86_64)
 --
 -- Host: localhost    Database: airplane
@@ -50,7 +52,7 @@ DROP TABLE IF EXISTS `passenger`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `passenger` (
   `passenger_id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT NULL,
+  `passenger_name` varchar(45) DEFAULT NULL,
   `address` varchar(100) DEFAULT NULL,
   `nationality` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
@@ -58,7 +60,7 @@ CREATE TABLE `passenger` (
   `phone` varchar(15) DEFAULT NULL,
   `passport_id` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`passenger_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='	';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='	';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +69,7 @@ CREATE TABLE `passenger` (
 
 LOCK TABLES `passenger` WRITE;
 /*!40000 ALTER TABLE `passenger` DISABLE KEYS */;
-INSERT INTO `passenger` VALUES (1,'ajay','nam mane','india','akkaya@redbus.com',20,'999999','J98989R'),(2,'Akash','akash','india','akash',9,'8618232','R9090904');
+INSERT INTO `passenger` VALUES (1,'ajay','nam mane','india','akkaya@redbus.com',20,'999999','J98989R'),(2,'Akash','akash','india','akash',9,'8618232','R9090904'),(3,'Akash Raj K R','12','India','aakashrajkr@gmail.com',12,'+918618232764','R9090904'),(4,'jajskd','sdfjlsdafj','India','akasha',12,'+91247892379','R83048'),(5,'Akash Raj K R','\"Sri Siddalingeshwara Nilaya\", Gopica School Road, Papanna Layout, Yaraganahalli New Extn.,','India','aakashrajkr@gmail.com',4,'+918618232764','R9090904'),(6,'Akash Raj K R','\"Sri Siddalingeshwara Nilaya\", Gopica School Road, Papanna Layout, Yaraganahalli New Extn.,','India','aakashrajkr@gmail.com',2,'+918618232764','R9090904'),(7,'Akash Raj K R','\"Sri Siddalingeshwara Nilaya\", Gopica School Road, Papanna Layout, Yaraganahalli New Extn.,','India','aakashrajkr@gmail.com',3,'+918618232764','R9090904'),(8,'Akash Raj','\"Sri Siddalingeshwara Nilaya\", Gopica School Road, Papanna Layout, Yaraganahalli New Extn.,','India','aakashrajkr@gmail.com',4,'+918618232764','R9090904'),(9,'Akash Raj','\"Sri Siddalingeshwara Nilaya\", Gopica School Road, Papanna Layout, Yaraganahalli New Extn.,','India','aakashrajkr@gmail.com',3,'+918618232764','R9090904'),(10,'Akash Raj','\"Sri Siddalingeshwara Nilaya\", Gopica School Road, Papanna Layout, Yaraganahalli New Extn.,','India','aakashrajkr@gmail.com',2,'+918618232764','R9090904'),(11,'Akash Raj','\"Sri Siddalingeshwara Nilaya\", Gopica School Road, Papanna Layout, Yaraganahalli New Extn.,','India','aakashrajkr@gmail.com',33,'+918618232764','R9090904');
 /*!40000 ALTER TABLE `passenger` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -138,7 +140,7 @@ DROP TABLE IF EXISTS `transaction`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `transaction` (
-  `trans_id` int NOT NULL,
+  `trans_id` int NOT NULL AUTO_INCREMENT,
   `passenger_id` int DEFAULT NULL,
   `flight_id` int DEFAULT NULL,
   `seats_booked` int DEFAULT NULL,
@@ -147,7 +149,7 @@ CREATE TABLE `transaction` (
   KEY `FK_passenger_idx` (`passenger_id`),
   CONSTRAINT `FK_flight` FOREIGN KEY (`flight_id`) REFERENCES `schedule` (`schedule_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_passenger` FOREIGN KEY (`passenger_id`) REFERENCES `passenger` (`passenger_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,7 +158,7 @@ CREATE TABLE `transaction` (
 
 LOCK TABLES `transaction` WRITE;
 /*!40000 ALTER TABLE `transaction` DISABLE KEYS */;
-INSERT INTO `transaction` VALUES (1,1,1,5);
+INSERT INTO `transaction` VALUES (1,1,1,5),(2,6,1,2),(4,8,2,1),(5,9,2,3),(6,10,3,1);
 /*!40000 ALTER TABLE `transaction` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -169,4 +171,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-08-08 16:50:09
+-- Dump completed on 2020-08-12 18:49:37
